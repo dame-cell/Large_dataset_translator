@@ -27,16 +27,15 @@ class ShareGPTV3(DataParser):
                          max_list_length_per_thread=max_list_length_per_thread)
 
     # Read function must assign data that has been read to self.data_read
-    def read(self) -> None:
-        # The read function must call the read function in DataParser class
-        # I just want to be sure that the file path is correct
-        super(ShareGPTV3, self).read()
-
+    def read(self):
         with open(self.file_path, encoding='utf-8') as jfile:
-            json_data = json.load(jfile)
+            try:
+                json_data = json.load(jfile)
+            except json.JSONDecodeError as e:
+                print(f"Error while parsing JSON: {e}")
+                return
 
         self.data_read = json_data
-        return None
 
     def convert(self) -> None:
         # The convert function must call the convert function in DataParser class
