@@ -49,7 +49,7 @@ class DataParser(metaclass=ForceBaseCallMeta):
                                                        # if larger, split the list into sub-list and process in parallel
                  translator: Provider = GoogleProvider,
                  source_lang: str = "en",
-                 target_lang: str = "vi",
+                 target_lang: str = "hi",
                  fail_translation_code: str="P1OP1_F"  # Fail code for *expected* fail translation and can be removed
                                                        # post-translation
                  ) -> None:
